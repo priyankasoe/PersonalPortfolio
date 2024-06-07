@@ -6,30 +6,38 @@
             <h2>PRIYANKA K. SOE</h2>
         </div>
         <div class="slides slide2">
-            <h2>into the mind...</h2>
-        </div>
-        <div class="slides slide3">
             <h2>PROJECTS</h2>
             <ul>
                 <div class="item">
-                    <h3>Project 1</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <h3>iMATHination: Math Problem to Image Web App</h3>
+                    <p>An educational-based web application aimed to help students conceptually understand math problems. Utilizes computer vision, named-entity-recognition, and AI-powered image generation.</p>
+                    <a href="{{ url_for('projects_imaithination') }}"> See more</a>
                 </div>
                 <div class="item">
-                    <h3>Project 2</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <h3>Custom Object Tracking Algorithm</h3>
+                    <p>Utilizes openCV to create optimized circle detection of robot "Sphero" balls while they display chemical formations.</p>
+                    <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
                 </div>
                 <div class="item">
-                    <h3>Project 3</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <h3>College Resale Web App</h3>
+                    <p>A marketplace-based web application handling user creation, cart management, semantic search, and tagging. Backend built in Python with Flask, sqlite database, and CSS/HTML frontend.</p>
+                    <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
                 </div>
             </ul>
         </div>
-        <div class="slides slide4">
+        <div class="slides slide3">
             <h2>PASSIONS</h2>
         </div>
-        <div class="slides slide5">
+        <div class="slides slide4">
             <h2>WORDS</h2>
+            <ul>
+                {% for post in posts %}
+                    <div class="item">
+                        <h3> {{ post[0] }}</h3>
+                        <p> {{ post[1] }}</p>
+                    </div>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="project">
+      <h1>{{ project['title'] }}</h1>
+      <div class="row">
+        <img src="/static/images/{{ project['visual1']}}"/>
+        <img src="/static/images/{{ project['visual2']}}"/>
+      </div>
+      <div class="section">
+        <h3> Inspiration </h3>
+        <p> {{ project['inspiration'] }}</p>
+      </div>
+      <div class="section">
+        <h3> What it Does </h3>
+        <p> {{ project['what it does'] }}</p>
+      </div>
+      <div class="section">
+        <h3> How it Works </h3>
+        <p> {{ project['how it works'] }}</p>
+      </div>
+    </div>  
+  </div>
+<!-- <header class="masthead">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>iMAiTHination</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header> -->
+
+  <!-- Post Content -->
+  <!-- <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          
+        </div>
+      </div>
+    </div>
+  </article> --> 
+
+  {% endblock %}
