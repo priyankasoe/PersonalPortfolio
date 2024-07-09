@@ -15,27 +15,33 @@ def index():
     conn = get_db_connection()
     posts = conn.execute('SELECT * FROM posts').fetchall()
     conn.close()
-    recent_posts_data = {'title': [], 'content': []}
 
-    display_len = 3 if len(posts) > 2 else 1
-    i = 0
+    recent_posts = posts[len(posts)-3:] if len(posts) > 2 else posts
 
-    while i < display_len:
-        recent_posts_data['title'].append(posts[len(posts)- i - 1]['title'])
-        recent_posts_data['content'].append(posts[len(posts)- i - 1]['content'])
-        i += 1
+    recent_posts.reverse()
 
-    for j in range(len(recent_posts_data['content'])):
-        curr_content = recent_posts_data['content'][j]
-        if len(curr_content.split(' ')) > 50:
-            new_content_list = re.split(r'\s', curr_content, maxsplit=49)
-            new_content = ' '.join(new_content_list[:49])
-            print(new_content)
-            recent_posts_data['content'][j] = new_content
+    #print(recent_posts[0][2])
+    # recent_posts_data = {'title': [], 'content': []}
+
+    # display_len = 3 if len(posts) > 2 else 1
+    # i = 0
+
+    # while i < display_len:
+    #     recent_posts_data['title'].append(posts[len(posts)- i - 1]['title'])
+    #     recent_posts_data['content'].append(posts[len(posts)- i - 1]['content'])
+    #     i += 1
+
+    # for j in range(len(recent_posts_data['content'])):
+    #     curr_content = recent_posts_data['content'][j]
+    #     if len(curr_content.split(' ')) > 50:
+    #         new_content_list = re.split(r'\s', curr_content, maxsplit=49)
+    #         new_content = ' '.join(new_content_list[:49])
+    #         print(new_content)
+    #         recent_posts_data['content'][j] = new_content
     
-    recent_posts = []
-    for p in range(len(recent_posts_data['title'])):
-        recent_posts.append((recent_posts_data['title'][p], recent_posts_data['content'][p]))
+    # recent_posts = []
+    # for p in range(len(recent_posts_data['title'])):
+    #     recent_posts.append((recent_posts_data['title'][p], recent_posts_data['content'][p]))
 
     return render_template('index.html', posts=recent_posts)
 
@@ -44,7 +50,20 @@ def posts():
     conn = get_db_connection()
     posts = conn.execute('SELECT * FROM posts').fetchall()
     conn.close()
+    posts.reverse()
     return render_template('posts.html',posts=posts)
+
+@app.route('/post/<post_name>')
+def post(post_name):
+    conn = get_db_connection()
+    res = conn.execute("SELECT created, title, content FROM posts WHERE title = (?)", (post_name,))
+    created, title, content = res.fetchone()
+    conn.close()
+    print(title)
+
+    #print(post)
+
+    return render_template('post.html', created=created, title=title, content=content)
 
 @app.route('/projects/imaithination')
 def projects_imaithination():
@@ -71,12 +90,13 @@ def add():
 @app.route('/addpost',methods=['POST'])
 def addpost():
     title = request.form['title']
+    blurb = request.form['blurb']
     content = request.form['content']
 
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
-            (title, content)
+    cur.execute("INSERT INTO posts (title, blurb, content) VALUES (?, ?, ?)",
+            (title, blurb, content)
             )
 
     conn.commit()

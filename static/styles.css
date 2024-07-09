@@ -78,13 +78,13 @@ nav a {
     margin-top: 20px;
 } */
 
-.container {
-    width: 100%;
+/* .container {
+    width: 100vh;
     height: 100vh;
     margin: 0;
-    background-color: rgb(183, 94, 183);
+    background-color: rgb(191, 153, 207);
     overflow: scroll;
-}
+} */
 
 .slides {
     width: 100%;
@@ -109,6 +109,7 @@ nav a {
     font-weight: 600;
     max-width: 650px;
     animation: 5s slide-right;
+    padding: 0% 10% 0% 10%;
 }
 
 .slide1 {
@@ -120,7 +121,8 @@ nav a {
 }
 
 .slide3 {
-    background: linear-gradient(to bottom, #195ece, #26aacf)
+    background-color: rgba(85, 80, 80, 0.261)
+    /* background: linear-gradient(to bottom, #195ece, #26aacf) */
 }
 
 .slide4 {
@@ -131,21 +133,24 @@ nav a {
     background: linear-gradient(0deg, #44098c, #9553ff)
 }
 
+.item-wrapper {
+    padding: 0 0 10% 0;
+}
+
 .item {
     background: rgb(123, 37, 173);
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px;
     padding: 20px;
-    width: 300px;
     transition: transform 0.2s;
     box-shadow: 10px 10px;
 }
 
 
-h1 {
+/* h1 {
     text-align: center;
-}
+} */
 
 /* .intro, .about, .projects, .contact {
     margin: 20px 0;
@@ -183,6 +188,38 @@ h1 {
     vertical-align: middle
 }
 
+.catalogue {
+    padding: 5% 5% 5% 5%;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    overflow-y: auto;
+    margin-top: 20px;
+  }
+
+  .post-preview {
+    background: rgb(123, 37, 173);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 250px;
+    height: 250px;
+    transition: transform 0.2s;
+    box-shadow: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .post-date {
+    font-size: 10px;
+    font-style: italic;
+    padding: none;
+  }
+
 /* section header slide in animation */
   
 @keyframes slide-right {
@@ -196,3 +233,53 @@ h1 {
       width: 100%;
     }
 }
+
+/* bootstrap */
+
+.carousel-item {
+    height: 100vh;
+}
+
+/* slide 1 */ 
+
+.p1-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-slide-text {
+    text-align: center;
+}
+
+.p1-subtitle {
+    text-align: right;
+}
+
+
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid rgb(0, 0, 0); /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(0, 0, 0); }
+  }
+
+

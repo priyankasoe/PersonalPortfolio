@@ -1,43 +1,105 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+        <div class="carousel-item active slide1">
+            <div class="p1-container">
+                <div class="row">
+                    <div class="title-slide-text">
+                        <h1>Hi, I'm Priyanka Soe</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="p1-subtitle">
+                        <h3>want to learn more? ...</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- <script type="text/javascript" src="../static/js/script.js"></script> -->
+        </div>
+        <div class="carousel-item slide2">
+            
+        </div>
+        <div class="carousel-item slide3">
+            <div class="row">
+                <div class="col">
+                    <h2>PROJECTS</h2>
+                </div>
+                <div class="col">
+                    <ul>
+                        <div class="item-wrapper">
+                            <div class="item">
+                                <h3>iMATHination: Math Problem to Image Web App</h3>
+                                <p>An educational-based web application aimed to help students conceptually understand math problems. Utilizes computer vision, named-entity-recognition, and AI-powered image generation.</p>
+                                <a href="{{ url_for('projects_imaithination') }}"> See more</a>
+                            </div>
+                            <div class="item">
+                                <h3>Custom Object Tracking Algorithm</h3>
+                                <p>Utilizes openCV to create optimized circle detection of robot "Sphero" balls while they display chemical formations.</p>
+                                <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
+                            </div>
+                            <div class="item">
+                                <h3>College Resale Web App</h3>
+                                <p>A marketplace-based web application handling user creation, cart management, semantic search, and tagging. Backend built in Python with Flask, sqlite database, and CSS/HTML frontend.</p>
+                                <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- <div class="container">
         <div class="slides slide1">
             <h2>PRIYANKA K. SOE</h2>
         </div>
         <div class="slides slide2">
             <h2>PROJECTS</h2>
             <ul>
-                <div class="item">
-                    <h3>iMATHination: Math Problem to Image Web App</h3>
-                    <p>An educational-based web application aimed to help students conceptually understand math problems. Utilizes computer vision, named-entity-recognition, and AI-powered image generation.</p>
-                    <a href="{{ url_for('projects_imaithination') }}"> See more</a>
-                </div>
-                <div class="item">
-                    <h3>Custom Object Tracking Algorithm</h3>
-                    <p>Utilizes openCV to create optimized circle detection of robot "Sphero" balls while they display chemical formations.</p>
-                    <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
-                </div>
-                <div class="item">
-                    <h3>College Resale Web App</h3>
-                    <p>A marketplace-based web application handling user creation, cart management, semantic search, and tagging. Backend built in Python with Flask, sqlite database, and CSS/HTML frontend.</p>
-                    <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
+                <div class="item-wrapper">
+                    <div class="item">
+                        <h3>iMATHination: Math Problem to Image Web App</h3>
+                        <p>An educational-based web application aimed to help students conceptually understand math problems. Utilizes computer vision, named-entity-recognition, and AI-powered image generation.</p>
+                        <a href="{{ url_for('projects_imaithination') }}"> See more</a>
+                    </div>
+                    <div class="item">
+                        <h3>Custom Object Tracking Algorithm</h3>
+                        <p>Utilizes openCV to create optimized circle detection of robot "Sphero" balls while they display chemical formations.</p>
+                        <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
+                    </div>
+                    <div class="item">
+                        <h3>College Resale Web App</h3>
+                        <p>A marketplace-based web application handling user creation, cart management, semantic search, and tagging. Backend built in Python with Flask, sqlite database, and CSS/HTML frontend.</p>
+                        <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
+                    </div>
                 </div>
             </ul>
         </div>
         <div class="slides slide3">
             <h2>PASSIONS</h2>
+
         </div>
         <div class="slides slide4">
             <h2>WORDS</h2>
             <ul>
                 {% for post in posts %}
                     <div class="item">
-                        <h3> {{ post[0] }}</h3>
-                        <p> {{ post[1] }}</p>
+                        <h3> {{ post[2] }}</h3>
+                        <p> {{ post[3] }}</p>
+                        <a href="{{ url_for('post', post_name=post[2]) }}"> See more </a>
                     </div>
                 {% endfor %}
             </ul>
         </div>
-    </div>
+    </div> -->
 {% endblock %}
