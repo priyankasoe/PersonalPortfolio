@@ -10,8 +10,9 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-@app.route('/')
-def index():
+@app.route('/',methods=['GET'])
+def index(active_slide=1):
+
     conn = get_db_connection()
     posts = conn.execute('SELECT * FROM posts').fetchall()
     conn.close()
@@ -20,30 +21,35 @@ def index():
 
     recent_posts.reverse()
 
-    #print(recent_posts[0][2])
-    # recent_posts_data = {'title': [], 'content': []}
+    recent_posts_data = {'created': [], 'title': [], 'content': []}
 
-    # display_len = 3 if len(posts) > 2 else 1
-    # i = 0
+    display_len = 3 if len(posts) > 2 else 1
+    i = 0
 
-    # while i < display_len:
-    #     recent_posts_data['title'].append(posts[len(posts)- i - 1]['title'])
-    #     recent_posts_data['content'].append(posts[len(posts)- i - 1]['content'])
-    #     i += 1
+    while i < display_len:
+        recent_posts_data['created'].append(posts[len(posts)- i - 1]['created'])
+        recent_posts_data['title'].append(posts[len(posts)- i - 1]['title'])
+        recent_posts_data['content'].append(posts[len(posts)- i - 1]['content'])
+        i += 1
 
-    # for j in range(len(recent_posts_data['content'])):
-    #     curr_content = recent_posts_data['content'][j]
-    #     if len(curr_content.split(' ')) > 50:
-    #         new_content_list = re.split(r'\s', curr_content, maxsplit=49)
-    #         new_content = ' '.join(new_content_list[:49])
-    #         print(new_content)
-    #         recent_posts_data['content'][j] = new_content
+    for j in range(len(recent_posts_data['content'])):
+        curr_content = recent_posts_data['content'][j]
+        if len(curr_content.split(' ')) > 50:
+            new_content_list = re.split(r'\s', curr_content, maxsplit=49)
+            new_content = ' '.join(new_content_list[:49])
+            recent_posts_data['content'][j] = new_content
     
-    # recent_posts = []
-    # for p in range(len(recent_posts_data['title'])):
-    #     recent_posts.append((recent_posts_data['title'][p], recent_posts_data['content'][p]))
+    recent_posts = []
+    for p in range(len(recent_posts_data['title'])):
+        recent_posts.append([recent_posts_data['created'][p],recent_posts_data['title'][p], recent_posts_data['content'][p]])
 
-    return render_template('index.html', posts=recent_posts)
+    slide_activity = ["carousel-item slide1", "carousel-item slide2", "carousel-item slide3", "carousel-item slide4",
+                       "carousel-item slide5"]
+
+    slide_activity[int(active_slide)-1] = "carousel-item active slide"+str(active_slide)
+
+
+    return render_template('index.html', posts=recent_posts, slide_activity=slide_activity)
 
 @app.route('/posts')
 def posts():
@@ -53,7 +59,7 @@ def posts():
     posts.reverse()
     return render_template('posts.html',posts=posts)
 
-@app.route('/post/<post_name>')
+@app.route('/post/<post_name>', methods=['GET','POST'])
 def post(post_name):
     conn = get_db_connection()
     res = conn.execute("SELECT created, title, content FROM posts WHERE title = (?)", (post_name,))
@@ -77,6 +83,14 @@ def projects_imaithination():
 
 @app.route('/projects/object-tracker')
 def projects_object_tracker():
+    project = {'title':'Custom Object Tracking Algorithm',
+               'inspiration':'fjdsklfsjksl',
+               'what it does': 'jfdkslfjd',
+               'how it works': 'jfkdslfj'}
+    return render_template('project.html', project=project)
+
+@app.route('/projects/RadarPaper')
+def projects_radar_derivations():
     project = {'title':'Custom Object Tracking Algorithm',
                'inspiration':'fjdsklfsjksl',
                'what it does': 'jfdkslfjd',

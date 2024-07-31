@@ -1,0 +1,104 @@
+html {
+    background: rgb(137, 99, 147);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(137, 99, 147) !important;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 1em 0;
+    margin: 0;
+}
+
+.navbar {
+    padding: 10px;
+    /* position: fixed; */
+    margin: 0;
+    border: 0;
+    top: 0px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.25); /* Transparent background */
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    z-index: 1000; /* Ensures the navbar is above other elements */
+}
+
+.footer {
+    padding: 10px;
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.25); /* Transparent background */
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    /*z-index: 1000; /* Ensures the navbar is above other elements */
+    text-align: center;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+/* post pages */ 
+
+.post {
+    background-color:rgb(140, 83, 141);
+    align-items: center;
+}
+
+.post-wrapper {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    box-shadow: 10px 10px 8px 5px rgba(181, 177, 177, 0.5);
+    margin: 20px;
+    padding: 20px;
+    transition: transform 0.2s;
+    width: 60%;
+    height: fit-content;
+}
+
+
+.post-title { 
+    padding: 5px 10px 5px 10px;
+    margin: 5% 0% 0% 5%;
+}
+
+.post-date {
+    font-weight: 40; 
+    font-size: 100; 
+    margin: 2% 2% 2% 2%; 
+}
+
+.post-content {
+    max-width: 80%;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.add_post {
+    vertical-align: middle
+}
+
+.post-arrow{
+    float: center;
+    text-align: center;
+    padding-top: 20%;
+}
+

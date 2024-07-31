@@ -3,52 +3,125 @@
 {% block content %}
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
-        <div class="carousel-item active slide1">
-            <div class="p1-container">
-                <div class="row">
-                    <div class="title-slide-text">
+        <div class=" {{ slide_activity[0] }} ">
+            <div class="p1-background">
+                <canvas></canvas>
+                <script src="../static/js/script.js"></script>
+            </div>
+            <div class="position-absolute bottom-50 end-50">
+            <div class="row">
+                <div class="p1-container">
+                    <div class="p1-title">
                         <h1>Hi, I'm Priyanka Soe</h1>
                     </div>
                 </div>
-                <div class="row">
+            </div>
+            </div>
+            <div class="position-absolute top-50 start-50">
+            <div class="row">
+                <div class="p1-container">
                     <div class="p1-subtitle">
-                        <h3>want to learn more? ...</h3>
+                        <h3>want to learn more?</h3>
                     </div>
                 </div>
             </div>
+            </div>
             <!-- <script type="text/javascript" src="../static/js/script.js"></script> -->
         </div>
-        <div class="carousel-item slide2">
-            
-        </div>
-        <div class="carousel-item slide3">
-            <div class="row">
-                <div class="col">
-                    <h2>PROJECTS</h2>
-                </div>
-                <div class="col">
-                    <ul>
-                        <div class="item-wrapper">
-                            <div class="item">
-                                <h3>iMATHination: Math Problem to Image Web App</h3>
-                                <p>An educational-based web application aimed to help students conceptually understand math problems. Utilizes computer vision, named-entity-recognition, and AI-powered image generation.</p>
-                                <a href="{{ url_for('projects_imaithination') }}"> See more</a>
-                            </div>
-                            <div class="item">
-                                <h3>Custom Object Tracking Algorithm</h3>
-                                <p>Utilizes openCV to create optimized circle detection of robot "Sphero" balls while they display chemical formations.</p>
-                                <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
-                            </div>
-                            <div class="item">
-                                <h3>College Resale Web App</h3>
-                                <p>A marketplace-based web application handling user creation, cart management, semantic search, and tagging. Backend built in Python with Flask, sqlite database, and CSS/HTML frontend.</p>
-                                <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
-                            </div>
-                        </div>
-                    </ul>
+        <div class=" {{ slide_activity[1] }} ">
+            <div class="p2-title"><h1>me in 4 traits</h1></div>
+            <div class="p2-wrapper">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="p2-img"><img src="/static/images/sunset.jpeg"/></div>
+                        <div class= "p2-img-caption"><h3>sunrise/sunset :o</h3></div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="p2-img"><img src="/static/images/math_img.png"/></div>
+                        <div class= "p2-img-caption"><h3>math— a love-hate relationship</h3></div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="p2-img"><img src="/static/images/running_img.png"/></div>
+                        <div class= "p2-img-caption"><h3>fitness!</h3></div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="p2-img"><img src="/static/images/math_img.png"/></div>
+                        <div class= "p2-img-caption"><h3>lots and lots and lots of words</h3></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class=" {{ slide_activity[2] }} ">
+            <div class="p3-wrapper d-flex align-items-center justify-content-center">
+                <div class="p3-catalogue">
+                    <div class="p3-project-preview">
+                        <h3>iMATHination: Math Problem to Image Web App</h3>
+                        <p>An educational-based web application aimed to help students conceptually understand math problems. Utilizes computer vision, named-entity-recognition, and AI-powered image generation.</p>
+                        <a href="{{ url_for('projects_imaithination') }}"> See more</a>
+                    </div>
+                    <div class="p3-project-preview">
+                        <h3>A Derivation of FCMW Radar Concepts</h3>
+                        <p>A paper I wrote in preparation for my internship in the autonomtive radar field. Includes mathematical derivations behind basic radar properties, as well as my own theoretical explanations.</p>
+                        <a href="{{ url_for('projects_radar_derivations')  }}"> See more</a>
+                    </div>
+                    <div class="p3-project-preview">
+                        <h3>Custom Object Tracking Algorithm</h3>
+                        <p>Utilizes openCV to create optimized circle detection of robot "Sphero" balls while they display chemical formations. Accurately tracks/IDs 3+ moving balls in frame. </p>
+                        <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
+                    </div>
+                    <div class="p3-project-preview">
+                        <h3>College Resale Web App</h3>
+                        <p>A marketplace-based web application handling user creation, cart management, semantic search, and tagging. Backend built in Python with Flask, sqlite database, and CSS/HTML frontend.</p>
+                        <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
+                    </div>
+                </div>
+                <div class="p3-title"><h1>PROJECTS & PAPERS</h1></div>
+            </div>
+        </div>
+        <div class="{{ slide_activity[3] }}">
+            <div class="p4-subtitle">I told you I liked writing, didn't I? Here's a snapshot of my mind, from explorations of the metaphysical to mathematical deductions of life to inevitable growing pains,</div>
+            <div class="p4-title"><h2>my favorite words, all in one place...</h2></div>
+            <div class="p4-catalogue">
+                {% for post in posts %}
+                    <div class="p4-post-preview">
+                        <h3> {{ post[1] }}</h3>
+                        <div class="p4-post-date"><p>sent to the world on {{ post[0] }}</p></div>
+                        <div class="p4-post-content"><p> {{ post[2] }}</p></div>
+                        <a href="{{ url_for('post', post_name=post[1]) }}">Read more</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="{{ slide_activity[4] }}">
+            <div class="p5-title"><h1>And, finally, if you want more of me</h1></div>
+            <div class="p5-wrapper">
+                <div class="row">
+                    <div class="col">
+                        <div class="p5-icon">
+                            <a href="https://www.linkedin.com/in/priyanka-soe"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                              </svg> </a>
+                        </div>
+                        <div class="p5-icon-title"><h3>connect!</h3></div>
+                    </div>
+                    <div class="col">
+                        <div class="p5-icon">
+                            <a href="https://www.github.com/"><svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                              </svg> </a>
+                        </div>
+                        <div class="p5-icon-title"><h3>check out my projects...</h3></div>
+                    </div>
+                    <div class="col">
+                        <div class="p5-icon">
+                            <a href="https://www.github.com/"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                              </svg> </a>
+                        </div>
+                        <div class="p5-icon-title"><h3>for more personal or professional inquiries :]</h3></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -59,47 +132,5 @@
         <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <!-- <div class="container">
-        <div class="slides slide1">
-            <h2>PRIYANKA K. SOE</h2>
-        </div>
-        <div class="slides slide2">
-            <h2>PROJECTS</h2>
-            <ul>
-                <div class="item-wrapper">
-                    <div class="item">
-                        <h3>iMATHination: Math Problem to Image Web App</h3>
-                        <p>An educational-based web application aimed to help students conceptually understand math problems. Utilizes computer vision, named-entity-recognition, and AI-powered image generation.</p>
-                        <a href="{{ url_for('projects_imaithination') }}"> See more</a>
-                    </div>
-                    <div class="item">
-                        <h3>Custom Object Tracking Algorithm</h3>
-                        <p>Utilizes openCV to create optimized circle detection of robot "Sphero" balls while they display chemical formations.</p>
-                        <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
-                    </div>
-                    <div class="item">
-                        <h3>College Resale Web App</h3>
-                        <p>A marketplace-based web application handling user creation, cart management, semantic search, and tagging. Backend built in Python with Flask, sqlite database, and CSS/HTML frontend.</p>
-                        <a href="{{ url_for('projects_object_tracker') }}"> See more</a>
-                    </div>
-                </div>
-            </ul>
-        </div>
-        <div class="slides slide3">
-            <h2>PASSIONS</h2>
-
-        </div>
-        <div class="slides slide4">
-            <h2>WORDS</h2>
-            <ul>
-                {% for post in posts %}
-                    <div class="item">
-                        <h3> {{ post[2] }}</h3>
-                        <p> {{ post[3] }}</p>
-                        <a href="{{ url_for('post', post_name=post[2]) }}"> See more </a>
-                    </div>
-                {% endfor %}
-            </ul>
-        </div>
-    </div> -->
+    
 {% endblock %}
